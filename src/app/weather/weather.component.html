@@ -1,0 +1,147 @@
+<article class="weather-app container">
+  <h1 class="weather-app__title">weather app</h1>
+  <section class="weather-app__search weather-search">
+    <form (ngSubmit)="searchWeather()">
+      <input
+        class="weather-search__input"
+        type="text"
+        [(ngModel)]="cityName"
+        name="cityName"
+        placeholder="Enter city name"
+      />
+      <div class="weather-search__actions">
+        <button
+          class="weather-search__button"
+          type="submit"
+          (click)="onButtonClick($event)"
+        >
+          Search
+        </button>
+        <div class="temperature-unit-toggle">
+          <button
+            [class.active]="isCelsius"
+            (click)="setTemperatureUnit(true)"
+            type="button"
+          >
+            °C
+          </button>
+          <button
+            [class.active]="!isCelsius"
+            (click)="setTemperatureUnit(false)"
+            type="button"
+          >
+            °F
+          </button>
+        </div>
+      </div>
+      <p *ngIf="errorMessage" class="weather-search__error">
+        {{ errorMessage }}
+      </p>
+    </form>
+  </section>
+
+  <section *ngIf="currentWeather" class="weather-app__current current-weather">
+    <img
+      class="current-weather__icon"
+      [src]="currentWeather.current.condition.icon"
+      alt="Weather icon"
+    />
+    <h2 class="current-weather__temperature">
+      {{
+        isCelsius
+          ? currentWeather.current.temp_c
+          : currentWeather.current.temp_f
+      }}°{{ isCelsius ? "C" : "F" }}
+    </h2>
+    <p class="current-weather__location">
+      {{ currentWeather.location.name }}, {{ currentWeather.location.country }}
+    </p>
+    <p class="current-weather__condition">
+      {{ currentWeather.current.condition.text }}
+    </p>
+    <div
+      class="current-weather__sun-info sun-info"
+      *ngIf="sunriseTime && sunsetTime"
+    >
+      <div class="sun-info__sunrise">
+        <img
+          class="sun-info__icon"
+          src="../../assets/images/sunrise.png"
+          alt="Sunrise"
+        />
+        <p class="sun-info__time">{{ sunriseTime }}</p>
+      </div>
+      <div class="sun-info__sunset">
+        <img
+          class="sun-info__icon"
+          src="../../assets/images/sunset.png"
+          alt="Sunset"
+        />
+        <p class="sun-info__time">{{ sunsetTime }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="forecast" class="weather-app__hourly forecast-hourly">
+    <button
+      class="forecast-hourly__scroll-button forecast-hourly__scroll-button--left"
+      (click)="scrollHourly('left')"
+    >
+      <
+    </button>
+    <div class="forecast-hourly__container" #hourlyContainer>
+      <div class="forecast-hourly__temperature">
+        <div
+          *ngFor="
+            let hour of forecast.forecast.forecastday[0].hour;
+            let i = index
+          "
+          class="forecast-hourly__hour"
+        >
+          <p class="forecast-hourly__data" *ngIf="i % 1 === 0">
+            <span class="forecast-hourly__time">{{
+              hour.time | date : "HH:mm"
+            }}</span>
+            <img class="forecast-hourly__icon" [src]="hour.condition.icon" />
+            <span class="forecast-hourly__temp">
+              {{ isCelsius ? hour.temp_c : hour.temp_f }}°{{
+                isCelsius ? "C" : "F"
+              }}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <button
+      class="forecast-hourly__scroll-button forecast-hourly__scroll-button--right"
+      (click)="scrollHourly('right')"
+    >
+      >
+    </button>
+  </section>
+
+  <section *ngIf="forecast" class="weather-app__forecast">
+    <h3 class="forecast__title">4-Day Forecast</h3>
+    <div class="forecast__container">
+      <div
+        *ngFor="let day of forecast.forecast.forecastday.slice(1, 5)"
+        class="forecast__day"
+      >
+        <h4 class="forecast__date">{{ day.date }}</h4>
+        <img
+          class="forecast__icon"
+          [src]="day.day.condition.icon"
+          alt="Weather icon"
+        />
+        <p class="forecast__condition">{{ day.day.condition.text }}</p>
+        <p class="forecast__temp">
+          {{ isCelsius ? day.day.avgtemp_c : day.day.avgtemp_f }}°{{
+            isCelsius ? "C" : "F"
+          }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- <div class="element"></div> -->
+</article>
