@@ -1,27 +1,69 @@
-# WeatherApp
+# Angular Weather App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7.
+This is a simple weather application built with Angular that allows users to search for weather information by entering a city name. The app provides current weather conditions, a 4-day forecast, and hourly temperature predictions for the selected city.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Search for weather information by city name
+- Display current weather conditions, including temperature, location, and weather description
+- Show sunrise and sunset times for the selected city
+- Display additional weather details such as wind speed, chance of rain, humidity, and pressure
+- Provide a 4-day weather forecast
+- Show hourly temperature predictions for the current day
+- Toggle between Celsius and Fahrenheit temperature units
+- Responsive design for optimal viewing on different screen sizes
 
-## Code scaffolding
+## Technologies Used
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular
+- HTML
+- CSS
+- TypeScript
 
-## Build
+## Getting Started
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To run this project locally, follow these steps:
 
-## Running unit tests
+1. Clone the repository:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   git clone https://github.com/tsotne-ts/angular-weather-app.git
+   
+2. Navigate to the project directory:
+   cd angular-weather-app
 
-## Running end-to-end tests
+3. Install the dependencies:
+   npm install
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+4. Start the development server:
+   ng serve
 
-## Further help
+5. Open your browser and visit `http://localhost:4200` to see the app running.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Usage
+
+1. Enter a city name in the search input field.
+2. Click the "Search" button or press Enter to fetch weather information for the specified city.
+3. The current weather conditions, including temperature, location, and weather description, will be displayed.
+4. Additional weather details such as wind speed, chance of rain, humidity, and pressure will also be shown.
+5. The sunrise and sunset times for the selected city will be displayed.
+6. A 4-day weather forecast will be provided, showing the average temperature for each day.
+7. Hourly temperature predictions for the current day will be displayed in a scrollable container.
+8. Click on the temperature unit buttons (°C or °F) to toggle between Celsius and Fahrenheit.
+
+## API
+
+This weather app uses the WeatherAPI.com API to fetch weather data. You'll need to sign up for a free API key at [WeatherAPI.com](https://www.weatherapi.com/) and replace the placeholder API key in the `WeatherService` with your own key.
+
+## Contributing
+
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Acknowledgements
+
+- [WeatherAPI.com](https://www.weatherapi.com/) for providing the weather data API.
+- [Angular](https://angular.io/) for the web application framework.
+- [Google Fonts](https://fonts.google.com/) for the font styles used in the app.
