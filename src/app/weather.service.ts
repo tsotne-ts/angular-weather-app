@@ -9,7 +9,7 @@ import { Forecast } from './models/forecast.model';
 })
 export class WeatherService {
   private apiKey = '3d952614b0bb4711b9a225743242906';
-  private apiUrl = 'http://api.weatherapi.com/v1';
+  private apiUrl = 'https://api.weatherapi.com/v1';
 
   constructor(private http: HttpClient) {}
 
