@@ -25,7 +25,6 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
   line-height: 1.6;
 }
 
@@ -54,7 +53,7 @@ header {
   gap: var(--spacing-lg);
 }
 
-.weather-app__title {
+h1 {
   text-align: center;
   color: var(--text-color);
   text-transform: capitalize;
